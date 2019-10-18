@@ -1,0 +1,36 @@
+{
+  "name": "ts-lerna-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tim Rice <timrice@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "lerna run dev",
+    "dev:stream": "lerna run dev --stream",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:fix": "tslint -c tslint.json -p tsconfig.json --fix"
+  },
+  "devDependencies": {
+    "husky": "^3.0.9",
+    "lerna": "^3.18.1",
+    "lint-staged": "^9.4.2",
+    "tslint": "^5.20.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.6.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint -c tslint.json -p tsconfig.json --fix",
+      "git add"
+    ]
+  }
+}
